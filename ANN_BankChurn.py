@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 from streamlit.source_util import page_icon_and_name
 # import matplotlib.pyplot as plt
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model
 import joblib
 
 
@@ -74,80 +74,80 @@ with st.sidebar:
 
     st.title("Dashboard")
 
-    st.info("""
-    Neural Network Churn Predictor
+#     st.info("""
+#     Neural Network Churn Predictor
 
-    Features:
-    - Customer Analytics
-    - Churn Prediction
-    - Real-time Results
-    """)
-# st.image("C:/Users/SAGAR GUPTA/Downloads/image1.jpg",use_container_width=True)
+#     Features:
+#     - Customer Analytics
+#     - Churn Prediction
+#     - Real-time Results
+#     """)
+# # st.image("C:/Users/SAGAR GUPTA/Downloads/image1.jpg",use_container_width=True)
 
-model=load_model("churn_model.keras")
-scaler=joblib.load("scaler.joblib")
-Encoder_Geo=joblib.load("Encoder_Geo.joblib")
-Encoder_Gender=joblib.load("Encoder_Gender.joblib")
-
-
-
-col1,col2=st.columns(2)
-# User Inputs
-with col1:
-    credit_score=st.number_input("Enter credit score",value=591)
-    Geography=st.selectbox("Select Geography",["France","Spain","Germany"])
-    Gender=st.selectbox("Select Gender",["Male","Female"])
-    Age=st.number_input("Enter Age",value=40)
-    Tenure=st.number_input("Enter Tenure",value=3)
-
-with col2:
-    # HasCrCard=st.checkbox("Has CrCard",value=True)
-    Balance=st.number_input("Enter Balance")
-    No_of_products=st.number_input("Enter No of Products",value=1)
-    HasCrCard=st.selectbox("Enter HasCrCard",[0,1])
-    IsActiveMember=st.selectbox("Enter IsActiveMember",[0,1])
-    EstimatedSalary=st.number_input("Enter EstimatedSalary")
+# model=load_model("churn_model.keras")
+# scaler=joblib.load("scaler.joblib")
+# Encoder_Geo=joblib.load("Encoder_Geo.joblib")
+# Encoder_Gender=joblib.load("Encoder_Gender.joblib")
 
 
-if st.button("Predict"):
 
-    Encoder_Ge=Encoder_Geo.transform([Geography])[0]
-    Encoder_Gen=Encoder_Gender.transform([[Gender]])[0]
-    Data = [credit_score, Encoder_Ge, Encoder_Gen, Age, Tenure, Balance, No_of_products, HasCrCard,IsActiveMember,EstimatedSalary]
-    input_data=np.array(Data).reshape(1,-1)
-    input_Scaler=scaler.transform(input_data)
+# col1,col2=st.columns(2)
+# # User Inputs
+# with col1:
+#     credit_score=st.number_input("Enter credit score",value=591)
+#     Geography=st.selectbox("Select Geography",["France","Spain","Germany"])
+#     Gender=st.selectbox("Select Gender",["Male","Female"])
+#     Age=st.number_input("Enter Age",value=40)
+#     Tenure=st.number_input("Enter Tenure",value=3)
 
-    Prediction=model.predict(input_Scaler)
-    # st.write(Prediction)
+# with col2:
+#     # HasCrCard=st.checkbox("Has CrCard",value=True)
+#     Balance=st.number_input("Enter Balance")
+#     No_of_products=st.number_input("Enter No of Products",value=1)
+#     HasCrCard=st.selectbox("Enter HasCrCard",[0,1])
+#     IsActiveMember=st.selectbox("Enter IsActiveMember",[0,1])
+#     EstimatedSalary=st.number_input("Enter EstimatedSalary")
 
-    prediction_label=[np.argmax(Prediction)]
-    # st.write(prediction_label)
 
-    if (prediction_label[0]==0):
-        st.markdown("""
-                <div style="
-                    background:#dcfce7;
-                    padding:25px;
-                    border-radius:15px;
-                    text-align:center;
-                    font-size:24px;
-                    font-weight:bold;
-                    color:#166534;">
-                    ✅ Customer Not Likely To Exit
-                </div>
-                """, unsafe_allow_html=True)
-        # st.success('✅ Customer Not Likely to Exit')
-    else:
-        st.markdown("""
-         <div style="
-             background:#fee2e2;
-             padding:25px;
-             border-radius:15px;
-             text-align:center;
-             font-size:24px;
-             font-weight:bold;
-             color:#991b1b;">
-             ⚠️ Customer Likely To Exit
-         </div>
-         """, unsafe_allow_html=True)
-        # st.error('⚠️ Customer Likely to Exit')
+# if st.button("Predict"):
+
+#     Encoder_Ge=Encoder_Geo.transform([Geography])[0]
+#     Encoder_Gen=Encoder_Gender.transform([[Gender]])[0]
+#     Data = [credit_score, Encoder_Ge, Encoder_Gen, Age, Tenure, Balance, No_of_products, HasCrCard,IsActiveMember,EstimatedSalary]
+#     input_data=np.array(Data).reshape(1,-1)
+#     input_Scaler=scaler.transform(input_data)
+
+#     Prediction=model.predict(input_Scaler)
+#     # st.write(Prediction)
+
+#     prediction_label=[np.argmax(Prediction)]
+#     # st.write(prediction_label)
+
+#     if (prediction_label[0]==0):
+#         st.markdown("""
+#                 <div style="
+#                     background:#dcfce7;
+#                     padding:25px;
+#                     border-radius:15px;
+#                     text-align:center;
+#                     font-size:24px;
+#                     font-weight:bold;
+#                     color:#166534;">
+#                     ✅ Customer Not Likely To Exit
+#                 </div>
+#                 """, unsafe_allow_html=True)
+#         # st.success('✅ Customer Not Likely to Exit')
+#     else:
+#         st.markdown("""
+#          <div style="
+#              background:#fee2e2;
+#              padding:25px;
+#              border-radius:15px;
+#              text-align:center;
+#              font-size:24px;
+#              font-weight:bold;
+#              color:#991b1b;">
+#              ⚠️ Customer Likely To Exit
+#          </div>
+#          """, unsafe_allow_html=True)
+#         # st.error('⚠️ Customer Likely to Exit')
