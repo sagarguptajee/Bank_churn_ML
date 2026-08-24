@@ -1,7 +1,5 @@
-streamlit 
+streamlit
 numpy
-pandas
 scikit-learn
-matplotlib
-tensorflow
+tensorflow==2.20.0
 joblib
