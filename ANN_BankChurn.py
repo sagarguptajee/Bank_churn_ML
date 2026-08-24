@@ -70,7 +70,7 @@ st.markdown(
 )
 
 with st.sidebar:
-    st.image("D:/Download/image1.jpg", width=120)
+    st.image("image1.jpg", width=120)
 
     st.title("Dashboard")
 
