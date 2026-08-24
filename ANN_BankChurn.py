@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 from streamlit.source_util import page_icon_and_name
 # import matplotlib.pyplot as plt
-#from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 import joblib
 
 
@@ -74,20 +74,20 @@ with st.sidebar:
 
     st.title("Dashboard")
 
-#     st.info("""
-#     Neural Network Churn Predictor
+    st.info("""
+    Neural Network Churn Predictor
 
-#     Features:
-#     - Customer Analytics
-#     - Churn Prediction
-#     - Real-time Results
-#     """)
-# # st.image("C:/Users/SAGAR GUPTA/Downloads/image1.jpg",use_container_width=True)
+    Features:
+    - Customer Analytics
+    - Churn Prediction
+    - Real-time Results
+    """)
+# st.image("C:/Users/SAGAR GUPTA/Downloads/image1.jpg",use_container_width=True)
 
-# model=load_model("churn_model.keras")
-# scaler=joblib.load("scaler.joblib")
-# Encoder_Geo=joblib.load("Encoder_Geo.joblib")
-# Encoder_Gender=joblib.load("Encoder_Gender.joblib")
+model=load_model("churn_model.keras")
+scaler=joblib.load("scaler.joblib")
+Encoder_Geo=joblib.load("Encoder_Geo.joblib")
+Encoder_Gender=joblib.load("Encoder_Gender.joblib")
 
 
 
